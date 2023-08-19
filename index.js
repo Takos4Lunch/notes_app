@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express(); //App init
+const sequelize = require('./libs/sequelize')
 
 const port = 3000;
 
