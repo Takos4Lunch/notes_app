@@ -19,7 +19,8 @@ app.listen(port, () => {
  * DB abstraction layer <- THIS ONE FIRST
  * - users
  * - notes
- * auth layer
+ * auth layer //Should be implemented after populating the DB with some data
+ * * which implies we should implement the routing layer before all of this
  * Routes
  * Documentation
  * testing
