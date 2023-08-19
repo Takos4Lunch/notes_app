@@ -15,8 +15,10 @@ app.listen(port, () => {
 
 /**
  * TODO:
+ * DB abstraction layer <- THIS ONE FIRST
+ * - users
+ * - notes
  * auth layer
- * DB abstraction layer
  * Routes
  * Documentation
  * testing
