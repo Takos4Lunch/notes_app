@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express(); //App init
 const sequelize = require('./libs/sequelize')
+const routerApi = require('./routes');
 
 const port = 3000;
 
 app.use(express.json());
+
+require('./utils/auth');
+
+routerApi(app);
 
 app.get('/', (req, res) => {
     res.send('Welcome');
