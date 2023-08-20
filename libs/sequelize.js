@@ -9,5 +9,7 @@ const sequelize = new Sequelize(config.dbname,config.user,config.password, {
 })
 
 assocModels(sequelize);
-
+/*
+sequelize.sync({force: true});
+*/
 module.exports = sequelize;
