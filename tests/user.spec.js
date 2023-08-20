@@ -65,6 +65,16 @@ describe('User Controller functionality tests', () => {
         expect(users).toBe(userModelSample);
     })
 
+    test('Should return the model corresponding to the email provided', async () => {
+        const users = await controller.findByEmail('john@example.com');
+        expect(users).toBe(userModelSample);
+    })
+
+    test('Should return error (no email provided)', async () => {
+        const users = await controller.findByEmail();
+        expect(users).toStrictEqual(boom.badData('No email provided'));
+    })
+
     /**
      * patch tests
      */

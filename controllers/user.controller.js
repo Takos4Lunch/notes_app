@@ -29,6 +29,18 @@ class UserController{
         return user;
     }
 
+    async findByEmail(email){
+        if(!email){
+            return boom.badData('No email provided');
+        }
+        
+        const user = await models.User.findOne({
+            where: {email}
+        });
+
+        return user;
+    }
+
     async findAll(){
         const results = await models.User.findAll();
         return results;
