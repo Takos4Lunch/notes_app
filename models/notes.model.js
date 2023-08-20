@@ -23,6 +23,10 @@ const noteSchema = {
         autoIncrement: true,
         primaryKey: true
     },
+    body: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     category: {
         type: DataTypes.STRING,
         allowNull: true

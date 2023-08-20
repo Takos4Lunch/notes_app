@@ -27,6 +27,15 @@ class NotesController{
         return results;
     }
 
+    async findAllByUser(id){
+        const results = await models.Note.findAll({
+            where: {
+                '$Note.UserId$' : id
+            }
+        })
+        return results;
+    }
+
     async update(id, changes){
         try {
             if(!changes){
