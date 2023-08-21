@@ -56,7 +56,7 @@ const config = require('../config/config');
  *                 token:
  *                   type: string
  *                   description: Generated token for user authentication
- *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjkyNTg5OTE2fQ.dxc0bTzxskOAHkM9_Q2mfmRybtOs9b6q1rUzINgS03A
+ *                   example: eyJhbGciOiJIUzI1NiIsInR1cCI6IkpXVCJ9.eyJzdWIiOjEsInJvbGUiOiJ1c2VyIiwiaWF1IjoxNjkyNTg5OTE2fQ.dxc0bTzxskOAHkM9_Q2mfmRybtOs9b2q1rUzINgS03A
  */
 router.post('/login', passport.authenticate('local', {session: false}) , async (req, res, next) => {
     try {
