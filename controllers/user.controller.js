@@ -74,7 +74,7 @@ class UserController{
                 id: id,
             }
         });
-        return result;
+        return result; //returns the number of destroyed rows, which in this case, will be 1
     }
 }
 

@@ -41,11 +41,12 @@ class NotesController{
             if(!changes){
                 return boom.badData('No data provided');
             }
-            const Note = await this.findById(id);
-            const updates = await Note.update({
-                changes
+            const note = await this.findById(id);
+            await note.update({
+                ...changes
             });
-            return updates.id;
+            await note.save();
+            return note.id;
         } catch (error) {
                 return boom.badData('No id provided');
         }
