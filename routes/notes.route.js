@@ -2,6 +2,8 @@ const express = require('express');
 const passport = require('passport');
 const NotesController = require('../controllers/note.controller');
 const { checkRoles } = require('../middlewares/auth.handler');
+const validatorHandler = require('../middlewares/validator.handler');
+const { getNoteSchema, createNoteSchema, updateNoteSchema } = require('../schemas/note.schema');
 
 const router = express.Router();
 //controller object
@@ -17,7 +19,9 @@ async(req, res, next) => {
     }
 })
 
-router.get('/:id', passport.authenticate('jwt', {session: false}), checkRoles('admin', 'user'), async (req, res, next) => {
+router.get('/:id', passport.authenticate('jwt', {session: false}), checkRoles('admin', 'user'),
+validatorHandler(getNoteSchema, 'params'),
+async (req, res, next) => {
     try{
         const user = await controller.findById(req.params.id);
         res.json(user);
@@ -27,6 +31,7 @@ router.get('/:id', passport.authenticate('jwt', {session: false}), checkRoles('a
 })
 
 router.post('/', passport.authenticate('jwt', {session: false}), checkRoles('admin', 'user') ,
+validatorHandler(createNoteSchema, 'body'),
 async(req, res, next) => {
     try{
         const body = {
@@ -41,6 +46,8 @@ async(req, res, next) => {
 })
 
 router.patch('/:id', passport.authenticate('jwt', {session:false}), checkRoles('admin', 'user'), 
+validatorHandler(getNoteSchema, 'params'),
+validatorHandler(updateNoteSchema, 'body'),
 async(req, res) => {
     try{
         const {id} = req.params;
@@ -54,7 +61,9 @@ async(req, res) => {
     }
 })
 
-router.delete('/:id', passport.authenticate('jwt', {session:false}), checkRoles('admin'), async(req, res) => {
+router.delete('/:id', passport.authenticate('jwt', {session:false}), checkRoles('admin'), 
+validatorHandler(getNoteSchema, 'params'),
+async(req, res) => {
     try{
         const {id} = req.params;
         const result = await controller.delete(id)
