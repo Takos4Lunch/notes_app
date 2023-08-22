@@ -19,6 +19,18 @@ const swaggerDefinition = {
         url: 'https://spdx.org/licenses/MIT.html',
     },
   },
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT'
+      }
+    },
+  },
+  security: {
+    bearerAuth: [],
+  },
 };
 
 const options = {

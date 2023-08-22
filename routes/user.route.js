@@ -43,7 +43,9 @@ async(req, res) => {
         const {id} = req.params;
         const body = req.body;
         const changes = await controller.update(id, body);
-        res.json(changes)
+        res.json({
+            id: changes
+        })
     }catch(err){
         next(err)
     }

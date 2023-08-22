@@ -52,10 +52,13 @@ class UserController{
                 return boom.badData('No data provided');
             }
             const user = await this.findById(id);
-            const updates = await user.update({
-                changes
+            //This function should NOT allow to update the password
+            //The aforementioned functionality will be moved to another endpoint
+            await user.update({
+                ...changes
             });
-            return updates.id;
+            await user.save();
+            return user.id;
         } catch (error) {
                 return boom.badData('No id provided');
         }
